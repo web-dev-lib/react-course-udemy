@@ -1,38 +1,53 @@
 let app = {
   title: 'Indecision App',
   subtitle: 'This is some info',
-  options: ['One', 'Two'],
+  options: [],
 }
 
-let template = (
-  <div>
-    <h1>{app.title}</h1>
-    {app.subtitle && <p>{app.subtitle}</p>}
-    {app.options.length > 0
-        ? <p>Options</p>
-        : <p>No options</p>
-    }
-    <ol>
-      <li>Item one</li>
-      <li>Item two</li>
-    </ol>
-  </div>
-)
+const onFormSubmit = e => {
+  e.preventDefault()
 
-let user = {
-  name: 'Sergei',
-  age: 28,
-  location: 'Moscow',
+  const option = e.target.elements.option.value
+
+  if(option) {
+    app.options.push(option)
+    e.target.elements.option.value = ''
+    renderApp()
+  } 
 }
 
-let templateTwo = (
-  <div>
-    <h1>{user.name}</h1>
-    <p>Age: {user.age}</p>
-    <p>Location: {user.location}</p>
-  </div>
-)
+const removeOptions = e => {
+  app.options = []
+  renderApp()
+}
 
 let appRoot = document.getElementById('app')
 
-ReactDOM.render(template, appRoot)
+const renderApp = () => {
+  const template = (
+    <div>
+      <h1>{app.title}</h1>
+      {app.subtitle && <p>{app.subtitle}</p>}
+      {app.options.length > 0
+          ? <p>Options</p>
+          : <p>No options</p>
+      }
+      <p>{app.options.length}</p>
+      <button onClick={removeOptions}>Remove All</button>
+      {
+        [99, 98, 97]
+      }
+      <ol>
+        <li>Item one</li>
+        <li>Item two</li>
+      </ol>
+      <form onSubmit={onFormSubmit}>
+        <input type="text" name="option" />
+        <button>Add Option</button>
+      </form>
+    </div>
+  )
+  ReactDOM.render(template, appRoot)
+}
+
+renderApp()
