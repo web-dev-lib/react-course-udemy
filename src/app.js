@@ -1,7 +1,17 @@
+let app = {
+  title: 'Indecision App',
+  subtitle: 'This is some info',
+  options: ['One', 'Two'],
+}
+
 let template = (
   <div>
-    <h1>Indecision App</h1>
-    <p>This is some info</p>
+    <h1>{app.title}</h1>
+    {app.subtitle && <p>{app.subtitle}</p>}
+    {app.options.length > 0
+        ? <p>Options</p>
+        : <p>No options</p>
+    }
     <ol>
       <li>Item one</li>
       <li>Item two</li>
@@ -9,14 +19,20 @@ let template = (
   </div>
 )
 
+let user = {
+  name: 'Sergei',
+  age: 28,
+  location: 'Moscow',
+}
+
 let templateTwo = (
   <div>
-    <h1>Sergei Komarov</h1>
-    <p>Age: 28</p>
-    <p>Location: Moscow</p>
+    <h1>{user.name}</h1>
+    <p>Age: {user.age}</p>
+    <p>Location: {user.location}</p>
   </div>
 )
 
 let appRoot = document.getElementById('app')
 
-ReactDOM.render(templateTwo, appRoot)
+ReactDOM.render(template, appRoot)

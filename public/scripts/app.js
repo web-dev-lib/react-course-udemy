@@ -1,17 +1,32 @@
 'use strict';
 
+var app = {
+  title: 'Indecision App',
+  subtitle: 'This is some info',
+  options: ['One', 'Two']
+};
+
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Indecision App'
+    app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
-    'This is some info'
+    app.subtitle
+  ),
+  app.options.length > 0 ? React.createElement(
+    'p',
+    null,
+    'Options'
+  ) : React.createElement(
+    'p',
+    null,
+    'No options'
   ),
   React.createElement(
     'ol',
@@ -29,26 +44,34 @@ var template = React.createElement(
   )
 );
 
+var user = {
+  name: 'Sergei',
+  age: 28,
+  location: 'Moscow'
+};
+
 var templateTwo = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Sergei Komarov'
+    user.name
   ),
   React.createElement(
     'p',
     null,
-    'Age: 28'
+    'Age: ',
+    user.age
   ),
   React.createElement(
     'p',
     null,
-    'Location: Moscow'
+    'Location: ',
+    user.location
   )
 );
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
