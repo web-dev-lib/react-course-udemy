@@ -5,8 +5,20 @@ class Counter extends React.Component {
     this.minusHandler = this.minusHandler.bind(this)
     this.resetHandler = this.resetHandler.bind(this)
     this.state = {
-      count: props.count
+      count: 0
     }
+  }
+
+  componentDidMount() {
+    const localCount = localStorage.getItem('count')
+
+    if(localCount) {
+      this.setState(() => ({ count: parseInt(localCount) }))
+    }
+  }
+
+  componentDidUpdate() {
+    localStorage.setItem('count', this.state.count)
   }
 
   plusHandler() {
@@ -49,4 +61,4 @@ Counter.defaultProps = {
   count: 0
 }
 
-ReactDOM.render(<Counter count={10} />, document.getElementById('app'))
+ReactDOM.render(<Counter />, document.getElementById('app'))
