@@ -8,47 +8,27 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var Counter = function (_React$Component) {
-  _inherits(Counter, _React$Component);
+var VisibilityToggles = function (_React$Component) {
+  _inherits(VisibilityToggles, _React$Component);
 
-  function Counter(props) {
-    _classCallCheck(this, Counter);
+  function VisibilityToggles() {
+    _classCallCheck(this, VisibilityToggles);
 
-    var _this = _possibleConstructorReturn(this, (Counter.__proto__ || Object.getPrototypeOf(Counter)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (VisibilityToggles.__proto__ || Object.getPrototypeOf(VisibilityToggles)).call(this));
 
-    _this.plusHandler = _this.plusHandler.bind(_this);
-    _this.minusHandler = _this.minusHandler.bind(_this);
-    _this.resetHandler = _this.resetHandler.bind(_this);
+    _this.toggleSetter = _this.toggleSetter.bind(_this);
     _this.state = {
-      count: 0
+      togle: true
     };
     return _this;
   }
 
-  _createClass(Counter, [{
-    key: 'plusHandler',
-    value: function plusHandler() {
+  _createClass(VisibilityToggles, [{
+    key: 'toggleSetter',
+    value: function toggleSetter() {
       this.setState(function (prevState) {
         return {
-          count: prevState.count + 1
-        };
-      });
-    }
-  }, {
-    key: 'minusHandler',
-    value: function minusHandler() {
-      this.setState(function (prevState) {
-        return {
-          count: prevState.count - 1
-        };
-      });
-    }
-  }, {
-    key: 'resetHandler',
-    value: function resetHandler() {
-      this.setState(function () {
-        return {
-          count: 0
+          togle: !prevState.togle
         };
       });
     }
@@ -61,64 +41,46 @@ var Counter = function (_React$Component) {
         React.createElement(
           'h1',
           null,
-          'Count: ',
-          this.state.count
+          'Some text'
         ),
         React.createElement(
           'button',
-          { onClick: this.plusHandler },
-          '+1'
+          { onClick: this.toggleSetter },
+          'show'
         ),
         React.createElement(
-          'button',
-          { onClick: this.minusHandler },
-          '-1'
-        ),
-        React.createElement(
-          'button',
-          { onClick: this.resetHandler },
-          'reset'
+          'p',
+          { hidden: this.state.togle },
+          'some paragraph'
         )
       );
     }
   }]);
 
-  return Counter;
+  return VisibilityToggles;
 }(React.Component);
 
-ReactDOM.render(React.createElement(Counter, null), document.getElementById('app'));
-
-// let count = 0
-// const addOne = () => {
-//   count++
-//   console.log('addOne', count)
-//   renderCounterApp()
-// }
-// const minusOne = () => {
-//   count--
-//   console.log('minusOne')
-//   renderCounterApp()
-// }
-// const reset = () => {
-//   count = 0
-//   console.log('reset')
-//   renderCounterApp()
-// }
-
+ReactDOM.render(React.createElement(VisibilityToggles, null), document.getElementById('app'));
 
 // const appRoot = document.getElementById('app')
 
-// const renderCounterApp = () => {
-//   const templateTwo = (
+// var togle = true
+// const toggleSetter = () => {
+//   togle = togle? false: true
+
+//   renderApp()
+// }
+
+// const renderApp = () => {
+//   const template = (
 //     <div>
-//       <h1>Count: {count}</h1>
-//       <button onClick={addOne}>+1</button>
-//       <button onClick={minusOne}>-1</button>
-//       <button onClick={reset}>reset</button>
+//       <h1>Some text</h1>
+//       <button onClick={toggleSetter}>show</button>
+//       <p hidden={togle}>some paragraph</p>
 //     </div>
 //   )
 
-//   ReactDOM.render(templateTwo, appRoot)
+//   ReactDOM.render(template, appRoot)
 // }
 
-// renderCounterApp()
+// renderApp()
