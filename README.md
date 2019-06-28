@@ -1,3 +1,6 @@
-for run:
-- live-server public
-- babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch
+for install:
+- yarn install
+
+for run, in 2 terminals:
+- yarn run serve
+- yarn run build
