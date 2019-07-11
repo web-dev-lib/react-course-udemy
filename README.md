@@ -1,4 +1,4 @@
-for install:
+# for install:
 - yarn install
 
 for run:
