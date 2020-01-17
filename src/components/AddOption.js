@@ -1,22 +1,23 @@
-import React from 'react'
+import React from "react";
 
+// TODO Rewrite to hooks
 export default class AddOption extends React.Component {
   state = {
     error: undefined
-  }
+  };
 
-  onFormSubmit = (e) => {
-    e.preventDefault()
+  onFormSubmit = e => {
+    e.preventDefault();
 
-    const option = e.target.elements.option.value.trim()
-    const error = this.props.handleAddOption(option)
+    const option = e.target.elements.option.value.trim();
+    const error = this.props.handleAddOption(option);
 
-    this.setState(() => ({ error }))
+    this.setState(() => ({ error }));
 
-    if(!error) {
-      e.target.elements.option.value = ''
+    if (!error) {
+      e.target.elements.option.value = "";
     }
-  }
+  };
 
   render() {
     return (
@@ -27,6 +28,6 @@ export default class AddOption extends React.Component {
           <button>Add Option</button>
         </form>
       </div>
-    )
+    );
   }
 }
