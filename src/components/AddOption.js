@@ -1,6 +1,8 @@
 import React from "react";
 
 // TODO Rewrite to hooks
+// const AddOption = props => {};
+
 export default class AddOption extends React.Component {
   state = {
     error: undefined
