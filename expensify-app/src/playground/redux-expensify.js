@@ -1,7 +1,5 @@
-// TODO
-// add uuid or nanoid
-
 import { createStore, combineReducers } from "redux";
+import uuid from "uuid";
 
 const addExpense = ({
   description = "",
@@ -11,7 +9,7 @@ const addExpense = ({
 } = {}) => ({
   type: "ADD_EXPENSE",
   expense: {
-    id: new Date().getMilliseconds().toString(),
+    id: uuid(),
     description,
     note,
     amount,
@@ -80,7 +78,7 @@ const expenseTwo = store.dispatch(
 
 store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
-// console.log(expenseOne, expenseTwo);
+console.log(expenseOne);
 
 const demoState = {
   expenses: [
@@ -99,10 +97,3 @@ const demoState = {
     endDate: undefined,
   },
 };
-
-const user = {
-  name: "Jane",
-  age: 24,
-};
-
-console.log();
