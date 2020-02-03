@@ -4,7 +4,7 @@ module.exports = {
   mode: "development",
   watch: true,
   // entry: "./src/index.js",
-  entry: "./src/playground/redux-expensify.js",
+  entry: "./src/playground/redux-expensify.ts",
   output: {
     path: path.join(__dirname, "public"),
     filename: "bundle.js",
